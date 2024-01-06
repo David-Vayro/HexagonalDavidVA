@@ -22,22 +22,22 @@ Producto createProducto = productoService.createProduct(producto);
 return new ResponseEntity<>(createProducto, HttpStatus.CREATED);
 }
 @GetMapping
-public ResponseEntity<List<Producto>> getAllProductos(@PathVariable Long id){
+public ResponseEntity<List<Producto>> getAllProductos (){//(@PathVariable Long id){
          List<Producto> producto= productoService.showProductos();
          return new ResponseEntity<>(producto, HttpStatus.OK);
 }
-@GetMapping ("/{Id}")
+@GetMapping ("/{id}")
 public ResponseEntity<Producto> getProductoById(@PathVariable Long id){
 return productoService.findProductById(id).map(producto -> new ResponseEntity<>(producto,HttpStatus.OK))
         .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 }
-@PutMapping ("/{Id}")
-public ResponseEntity<Producto> updateProducto(@PathVariable Long producto_id, @RequestBody Producto producto){
-return productoService.updateProduct(producto_id, producto)
+@PutMapping ("/{id}")
+public ResponseEntity<Producto> updateProducto(@PathVariable Long id, @RequestBody Producto producto){
+return productoService.updateProduct(id, producto)
         .map(productoActualizado -> new ResponseEntity<>(productoActualizado, HttpStatus.ACCEPTED))
         .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 }
-@DeleteMapping("/{Id}")
+@DeleteMapping("/{id}")
 public ResponseEntity<Producto> deleteProducto(@PathVariable Long id){
     if(productoService.deleteProduct(id)){
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

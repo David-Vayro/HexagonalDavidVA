@@ -1,4 +1,4 @@
-package com.codigo.ArqHexagonal.infrastructure.entity;
+/*package com.codigo.ArqHexagonal.infrastructure.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,4 +10,4 @@ import java.io.Serializable;
 public class FacturaDetalleEntityId implements Serializable {
     private Long facturaCabecera;
     private Long producto;
-}
+}*/

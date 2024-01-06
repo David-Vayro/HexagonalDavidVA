@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/facturacabecera")
+@RequestMapping("api/facturaCabecera")
 public class FacturaCabeceraController {
     private final FacturaCabeceraService facturaCabeceraService;
 
@@ -23,22 +23,22 @@ public class FacturaCabeceraController {
         return new ResponseEntity<>(createFacturaCabecera, HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<List<FacturaCabecera>> getAllFacturaCabecera(@PathVariable Long id){
+    public ResponseEntity<List<FacturaCabecera>> getAllFacturaCabecera(){
         List<FacturaCabecera> facturaCabecera= facturaCabeceraService.showFacturaCabecera();
         return new ResponseEntity<>(facturaCabecera, HttpStatus.OK);
     }
-    @GetMapping ("/{Id}")
+    @GetMapping ("/{id}")
     public ResponseEntity<FacturaCabecera> getFacturaCabeceraById(@PathVariable Long id){
         return facturaCabeceraService.findFacturaCabeceraById(id).map(producto -> new ResponseEntity<>(producto,HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @PutMapping ("/{Id}")
-    public ResponseEntity<FacturaCabecera> updateFacturaCabecera(@PathVariable Long facturaCabeceraId, @RequestBody FacturaCabecera facturaCabecera){
-        return facturaCabeceraService.updateFacturaCabecera(facturaCabeceraId, facturaCabecera)
+    @PutMapping ("/{id}")
+    public ResponseEntity<FacturaCabecera> updateFacturaCabecera(@PathVariable Long id, @RequestBody FacturaCabecera facturaCabecera){
+        return facturaCabeceraService.updateFacturaCabecera(id, facturaCabecera)
                 .map(facturaCabecera1 -> new ResponseEntity<>(facturaCabecera1, HttpStatus.ACCEPTED))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @DeleteMapping("/{Id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<FacturaCabecera> deleteFacturaCabecera(@PathVariable Long id){
         if(facturaCabeceraService.deleteFacturaCabecera(id)){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

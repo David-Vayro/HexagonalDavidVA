@@ -8,8 +8,7 @@ import lombok.Setter;
     @Entity
     @Getter
     @Setter
-    @IdClass(FacturaDetalleEntityId.class)
-    @Table(name = "facturaDetalle")
+    @Table(name = "api/facturaDetalle")
     public class FacturaDetalleEntity {
         @Id
         @Column(name = "detalle_id")
